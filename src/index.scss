@@ -1,0 +1,75 @@
+@import './colors.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: unset;
+}
+
+.flexbox {
+  display: flex;
+} 
+
+.col {
+  flex-direction: column;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.mr-40 {
+  margin-right: 40px;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.align-center{
+  align-items: center;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+
+  
+}
+
+.bg--secondary{
+  background-color: $secondary;
+}
+
+.bg--accent{
+  background-color: $accent;
+}
+
+
