@@ -3,8 +3,10 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import './App.css';
 
 import Dashboard from './pages/Dashboard';
-import LogIn from './pages/LogIn';
-import LogOut from './pages/LogOut';
+import Poll from './pages/Poll';
+import CreatePoll from './pages/CreatePoll';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 
 class App extends Component {
@@ -14,8 +16,10 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route path="/log-in" component={LogIn} />
-            <Route path="/log-out" component={LogOut} />
+            <Route path="/poll" component={Poll} />
+            <Route path="/create" component={CreatePoll} />
+            <Route path="/sign-in" component={SignIn} />
+            <Route path="/sign-up" component={SignUp} />
           </Switch>
         </div>
       </BrowserRouter>

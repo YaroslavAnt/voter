@@ -7,7 +7,7 @@ import Footer from "./Footer";
 
 const Page = (props) => (
     <div className="page flexbox">
-        <Sidebar />
+        <Sidebar isAuth={false} />
         <div className="flexbox col grow">
             <Header pageName={props.pageName} />
             <main>{props.children}</main>

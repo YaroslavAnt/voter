@@ -1,11 +1,12 @@
 import React from "react";
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
 import Page from "../layouts/Page";
-import PollsControlls from "../components/PollsControlls";
-import PollsList from "../components/PollsList";
+import PollsHeading from "../components/PollsHeading";
+import DashboardListItem from "../components/PollsListItems/DashboardListItem";
+import { Divider } from "@material-ui/core";
+import PollsShape from "../components/PollsShape";
 
 const styles = () => ({
     button: {
@@ -14,12 +15,12 @@ const styles = () => ({
     buttonAccent: {
         backgroundColor: '#ae00ae',
     },
-    paperBottom: {
-        backgroundColor: '#fff',
-        padding: '20px',
-        position: 'relative',
-        marginTop: '50px'
+    buttonGray: {
+        backgroundColor: '#989898',
     },
+    margin: {
+        margin: '0 20px',
+    }
 })
 
 function Dashboard(props) {
@@ -28,10 +29,24 @@ function Dashboard(props) {
         <div className="dashboard">
             <Page pageName="dashboard">
                 <Button variant="contained" className={[classes.button, classes.buttonAccent].join(' ')}>ADD NEW POLL</Button>
-                <Paper className={classes.paperBottom}>
-                    <PollsControlls />
-                    <PollsList />
-                </Paper>
+
+                <PollsShape>
+                    <PollsHeading heading="Polls" bgColor="#00bbd1">
+                        <Button variant="contained" className={[classes.button, classes.margin, classes.buttonAccent].join(' ')}>NOT VOTED POLLS</Button>
+                        <Button variant="contained" className={[classes.button, classes.margin, classes.buttonGray].join(' ')}>VOTED POLLS</Button>
+                    </PollsHeading>
+
+                    <ul>
+                        {
+                            [0, 0, 0, 0, 0].map((el, idx) => (
+                                <li key={idx}>
+                                    <DashboardListItem index={idx} />
+                                    <Divider />
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </PollsShape>
             </Page>
         </div>
     )
