@@ -7,6 +7,7 @@ import Poll from './pages/Poll';
 import CreatePoll from './pages/CreatePoll';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import VerifyEmail from './pages/VerifyEmail';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path="/create" component={CreatePoll} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/verification" component={VerifyEmail} />
           </Switch>
         </div>
       </BrowserRouter>

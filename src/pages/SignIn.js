@@ -1,60 +1,32 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { TextField, withStyles } from '@material-ui/core';
+import { Link, Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import Page from '../layouts/Page';
 import PollsShape from '../components/PollsShape';
 import PollsHeading from '../components/PollsHeading';
-import MyButton from '../layouts/MyButton';
+import MyForm from '../layouts/MyForm';
+import * as auth from "../store/actions/auth";
 
-const styles = () => ({
-  margin: {
-    margin: '20px'
-  }
-})
 
 class SignIn extends React.Component {
-  state = {
-    email: '',
-    password: ''
-  }
-
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
-  };
-
-  handleSubmit = () => {
-
-  }
 
   render() {
-    const { classes } = this.props;
-
+    const { email } = this.props;
+    if (email) {
+      return (
+        <Redirect to='/' />
+      )
+    }
     return (
       <Page pageName="Sign In">
         <PollsShape>
+
           <PollsHeading heading="Sign into Voter app" bgColor="#ae00ae">
             Please enter your email and password
           </PollsHeading>
 
-          <form >
-            <TextField
-              className={classes.margin}
-              name='email'
-              placeholder='Email'
-              onChange={this.handleChange('email')} />
-            <br />
-
-            <TextField
-              className={classes.margin}
-              name='password'
-              type='password'
-              placeholder='Password'
-              onChange={this.handleChange('password')} />
-            <br />
-
-            <MyButton bgColor="#ae00ae" onClick={this.handleSubmit}> Sign In</MyButton>
-          </form>
+          <MyForm formType="SignIn" {...this.props} userAuthRequest={this.props.signInRequest} />
 
           <p style={{ color: "#ae00ae" }}>First time app user? <Link to="/sign-up">sign-up</Link></p>
 
@@ -62,7 +34,18 @@ class SignIn extends React.Component {
       </Page >
     );
   }
-
 }
 
-export default withStyles(styles)(SignIn);
+const MapStateToProps = state => {
+  return {
+    email: state.auth.email
+  }
+}
+
+const MapDispatchToProps = dispatch => {
+  return {
+    signInRequest: (user) => dispatch(auth.signinAction(user))
+  }
+}
+
+export default connect(MapStateToProps, MapDispatchToProps)(SignIn);

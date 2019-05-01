@@ -2,13 +2,21 @@ import React from "react";
 
 import Page from "../layouts/Page";
 import PollsHeading from "../components/PollsHeading";
-import { Divider, TextField } from "@material-ui/core";
+import { Divider, TextField, Button, withStyles } from "@material-ui/core";
 import PollsShape from "../components/PollsShape";
 import CreateListItem from "../components/PollsListItems/CreateListItem";
 
 
+const styles = () => ({
+  button: {
+    color: '#fff',
+    backgroundColor: '#ae00ae',
+    margin: '20px 0'
+  }
+})
 
-function CreatePoll() {
+function CreatePoll(props) {
+  const { classes } = props;
   return (
     <div className="createPoll">
       <Page pageName="Create">
@@ -16,7 +24,7 @@ function CreatePoll() {
         <PollsShape>
           <PollsHeading heading="Create new poll" bgColor="#ae00ae">
             Please add your question and answers for polling
-                    </PollsHeading>
+          </PollsHeading>
 
           <TextField fullWidth={true} placeholder='Question' />
 
@@ -30,11 +38,18 @@ function CreatePoll() {
               ))
             }
           </ul>
+
+          <Button
+            variant="contained"
+            className={classes.button}>
+            ADD NEW ANSWER
+          </Button>
+
         </PollsShape>
       </Page>
     </div>
   )
 }
 
-export default CreatePoll;
+export default withStyles(styles)(CreatePoll);
 
